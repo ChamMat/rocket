@@ -1,33 +1,48 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import useInterval from 'src/function/useInterval';
+import isStop from 'src/function/isStop';
+import nextPosY from 'src/function/nextPosY';
+import newVitesseY from 'src/function/newVitesseY';
 
+import Ship from 'src/components/Ship';
+import Sol from 'src/components/Sol';
 
 import PanelStyled from './PanelStyled';
-import Ship from '../Ship';
 
 const Panel = ({ space, right, left}) => {
   const [posX, setPosX] = useState(445);
-  const [posY, setPosY] = useState(578);
-  const [vitesse, setVitesse] = useState(0);
+  const [posY, setPosY] = useState(300);
+  const [vitesseY, setVitesseY] = useState(0);
   const [deg, setDeg] = useState(0);
+  const [stop, setStop] = useState(false);
 
   useInterval(() => {
-    if (space) {
-      setVitesse(vitesse + 0.03);
+    let nPosY = posY;
+    let nVitesseY = vitesseY;
+    setStop(isStop(posY, 530));
+    if (stop) {
+      nPosY = 530;
+      nVitesseY = 0;
+      if (space) {
+        nVitesseY = newVitesseY(nVitesseY, space);
+      }
     }
-    else {
-      setVitesse(vitesse - 0.1);
+    if (!stop) {
+      // Si le vaisseau n'est pas posé:
+      // Calcule de la nouvelle vitesse:
+      nVitesseY = newVitesseY(nVitesseY, space);
+    }
+    if (right) {
+      setDeg(deg + 1);
+    }
+    if (left) {
+      setDeg(deg - 1);
     }
 
-    if (posY >= 578 && !space) {
-      setVitesse(0);
-      setPosY(578);
-    }
-    else {
-      const newPosY = posY - vitesse;
-      setPosY(newPosY);
-    }
+    setVitesseY(nVitesseY);
+    setPosY(nextPosY(nVitesseY, nPosY));
   }, 20);
 
   return (
@@ -35,9 +50,17 @@ const Panel = ({ space, right, left}) => {
       <Ship
         posX={posX}
         posY={posY}
+        deg={deg}
       />
+      <Sol />
     </PanelStyled>
   );
+};
+
+Panel.propTypes = {
+  space: PropTypes.bool.isRequired,
+  right: PropTypes.bool.isRequired,
+  left: PropTypes.bool.isRequired,
 };
 
 export default Panel;

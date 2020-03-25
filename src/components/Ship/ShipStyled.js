@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
-const ShipStyled = styled.div`
+const ShipStyled = styled.div.attrs((props) => ({
+  rotate: props.deg,
+  style: {
+    top: props.posY,
+    left: props.posX,
+  },
+}))`
     position:absolute;
-
-    top: ${(props) => props.posY}px;
-    left: ${(props) => props.posX}px;
-
+    transform-origin: center;
+    transform: rotate(${(props) => props.rotate}deg);
+    z-index: 90;
     height: 20px;
     width: 10px;
     background-color: white;

@@ -7,6 +7,7 @@ const PanelStyled = styled.div`
   width: 900px;
   background-color:#000;
   color:white;
+  overflow:hidden;
 `;
 
 export default PanelStyled;
