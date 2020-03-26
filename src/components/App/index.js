@@ -11,6 +11,7 @@ const App = () => {
   const [space, setSpace] = useState(false);
   const [right, setRight] = useState(false);
   const [left, setLeft] = useState(false);
+  const [pause, setPause] = useState(false);
 
   const handleKeyDown = useCallback((evt) => {
     switch (evt.keyCode) {
@@ -23,6 +24,8 @@ const App = () => {
       case 39:
         setRight(true);
         break;
+      case 80:
+        setPause(true);
       default:
         break;
     }
@@ -61,6 +64,7 @@ const App = () => {
         space={space}
         right={right}
         left={left}
+        pause={pause}
       />
     </AppStyled>
   );

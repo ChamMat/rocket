@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const ShipStyled = styled.div.attrs((props) => ({
   rotate: props.deg,
   style: {
-    top: props.posY,
+    bottom: props.posY,
     left: props.posX,
   },
 }))`

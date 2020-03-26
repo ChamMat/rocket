@@ -1,19 +1,21 @@
 // Fonction qui calcule la prochaine vitesse en Y
 import PropTypes from 'prop-types';
 
-const newVitesseY = (vitesseY, space) => {
-
+const newVitesse = (vitesse, space) => {
   if (space) {
-    return (vitesseY - 0.01);
+    return (vitesse + 0.01);
   }
-
-  return (vitesseY + 0.03);
+  let nVitesse = vitesse - 0.03;
+  if (nVitesse <= 0) {
+    nVitesse = 0;
+  }
+  return nVitesse;
 };
 
-newVitesseY.propTypes = {
+newVitesse.propTypes = {
   space: PropTypes.bool.isRequired,
   vitesseY: PropTypes.number.isRequired,
   posY: PropTypes.number.isRequired,
 };
 
-export default newVitesseY;
+export default newVitesse;
