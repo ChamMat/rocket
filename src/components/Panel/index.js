@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import levelData from 'src/levelData/levelData';
+
 import useInterval from 'src/function/useInterval';
 import handleTick from 'src/function/handleTick';
 
@@ -16,8 +18,18 @@ const Panel = ({
   left,
   pause,
 }) => {
-  const [posX, setPosX] = useState(445);
-  const [posY, setPosY] = useState(51);
+  const shipWidth = 10;
+  const shipHeight = 30;
+  // Position initial: position du 1er block + sa largeur / 2 - largeur du vaisseau / 2
+  const [posX, setPosX] = useState(
+    Number(levelData.level1[0].left)
+  + Number(((levelData.level1[0].width / 2)
+  - (shipWidth / 2))),
+  );
+  const [posY, setPosY] = useState(
+    Number(levelData.level1[0].bottom)
+    + Number(levelData.level1[0].height),
+  );
   const [vitesseX, setVitesseX] = useState(0);
   const [vitesseY, setVitesseY] = useState(0);
   const [deg, setDeg] = useState(0);
@@ -25,13 +37,20 @@ const Panel = ({
   const [angleDanger, setAngleDanger] = useState(false);
   const [vitesseXDanger, setVitesseXDanger] = useState(false);
   const [vitesseYDanger, setVitesseYDanger] = useState(false);
+  const [blocksValidate, setBlockValidate] = useState([]);
   // const [gravite, setgravite] = useState(1);
 
   // C'est ici qu'es géré la boucle infinie.
   // eslint-disable-next-line consistent-return
-
   useInterval(() => {
+    if (pause) {
+      // A supprimer
+      return false;
+    }
     const newData = handleTick(
+      levelData.level1,
+      shipWidth,
+      shipHeight,
       posX,
       posY,
       vitesseX,
@@ -42,11 +61,13 @@ const Panel = ({
       vitesseXDanger,
       vitesseYDanger,
       space,
-      pause,
       left,
       right,
     );
 
+    if (newData.blocksValidate && !blocksValidate.includes(newData.blocksValidate)) {
+      setBlockValidate([...blocksValidate, newData.blocksValidate]);
+    }
     setPosX(newData.posX);
     setPosY(newData.posY);
     setVitesseX(newData.vitesseX);
@@ -76,7 +97,17 @@ const Panel = ({
         space={space}
         destruction={destruction}
       />
-      <Sol />
+      {levelData.level1.map((sol) => (
+        <Sol
+          key={sol.id}
+          validate={blocksValidate}
+          id={sol.id}
+          bottom={`${sol.bottom}px`}
+          left={`${sol.left}px`}
+          height={`${sol.height}px`}
+          width={`${sol.width}px`}
+        />
+      ))}
     </PanelStyled>
   );
 };

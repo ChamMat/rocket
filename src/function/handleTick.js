@@ -1,4 +1,7 @@
 const handleTick = (
+  blocks,
+  shipWidth,
+  shipHeight,
   posX,
   posY,
   vitesseX,
@@ -9,7 +12,6 @@ const handleTick = (
   vitesseXDanger,
   vitesseYDanger,
   space,
-  pause,
   left,
   right,
 ) => {
@@ -26,11 +28,6 @@ const handleTick = (
   };
 
   if (!destruction) {
-    if (pause) {
-      // A Suprimer à la fin
-      newData.destruction = true;
-    }
-
     let newDeg = deg;
     const gravite = 0.02;
     const inertie = 1;
@@ -69,24 +66,34 @@ const handleTick = (
       deplacementY += puissance * (Math.cos(newDeg * Math.PI / 180));
     }
 
-    // Atterissage sur le block
-    if (posY <= 48 && deplacementY < 0 && posX > 425 - 5 && posX < 475 - 5) {
-      if (angleDanger || vitesseXDanger || vitesseYDanger) {
-        newData.destruction = true;
-        newData.posY = 48;
+    // Atterissage/collision sur le/les blocks
+    blocks.forEach((block) => {
+      if (posY <= (Number(block.height) + Number(block.bottom))
+        && posY >= block.bottom - shipHeight
+        && posX > block.left - (shipWidth / 2)
+        && posX < Number(block.left) + Number(block.width) - (shipWidth / 2)
+      ) {
+        if (angleDanger
+          || vitesseXDanger
+          || vitesseYDanger
+          || (Number(block.height) + Number(block.bottom) - 5 > posY + shipHeight)) {
+          // Colision avec un block / atterissage raté
+          newData.destruction = true;
+        }
+        else if (!space) {
+          newData.blocksValidate = block.id;
+          deplacementY = 0;
+          newData.posY = (Number(block.bottom) + Number(block.height));
+          deplacementX = 0;
+          newDeg = (0);
+        }
       }
       else {
-        deplacementY = 0;
-        newData.posY = 48;
-        deplacementX = 0;
-        newDeg = (0);
+        newData.posY = posY + deplacementY;
       }
-    }
-    else {
-      newData.posY = posY + deplacementY;
-    }
+    });
 
-    // Gestion Collision
+    // Gestion Collision de bordure
 
     if (posX < 0 || posX > 870) {
       newData.destruction = true;

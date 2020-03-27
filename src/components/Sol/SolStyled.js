@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
-const SolStyled = styled.div`
+const SolStyled = styled.div.attrs((props) => ({
+  style: {
+    bottom: props.bottom,
+    left: props.left,
+    height: props.height,
+    width: props.width,
+  },
+}))`
     position:absolute;
-
-    top: 550px;
-    left: 425px;
-
-    height: 50px;
-    width: 50px;
-    background-color: gray;
+    background-color: ${(props) => (props.valide ? 'green' : 'gray')};
 `;
 
 export default SolStyled;
