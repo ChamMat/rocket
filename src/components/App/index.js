@@ -67,7 +67,7 @@ const App = () => {
 
   return (
     <AppStyled>
-      <div className="instruction">Press space for reactor. Press right/left for rotate Rocket</div>
+      <div className="instruction">Press space to put reactor on. Press right/left to rotate Rocket</div>
       <Switch>
         <Route exact path="/">
           <Accueil />
