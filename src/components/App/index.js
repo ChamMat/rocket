@@ -1,6 +1,12 @@
 // == Import npm
 import React, { useState, useEffect, useCallback } from 'react';
 
+import {
+  Switch,
+  Route,
+} from 'react-router-dom';
+
+import Accueil from 'src/components/Accueil';
 import Panel from 'src/components/Panel';
 
 // == Import
@@ -26,6 +32,7 @@ const App = () => {
         break;
       case 80:
         setPause(true);
+        break;
       default:
         break;
     }
@@ -60,12 +67,23 @@ const App = () => {
 
   return (
     <AppStyled>
-      <Panel
-        space={space}
-        right={right}
-        left={left}
-        pause={pause}
-      />
+      <div className="instruction">Press space for reactor. Press right/left for rotate Rocket</div>
+      <Switch>
+        <Route exact path="/">
+          <Accueil />
+        </Route>
+
+        <Route exact path="/game">
+          <Panel
+            space={space}
+            right={right}
+            left={left}
+            pause={pause}
+          />
+        </Route>
+
+
+      </Switch>
     </AppStyled>
   );
 };

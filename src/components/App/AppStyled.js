@@ -7,6 +7,15 @@ const AppStyled = styled.div`
   display:flex;
   justify-content:center;
   align-items: center;
+
+  .instruction {
+    color:white;
+    text-align:center;
+    position: absolute;
+    top:1em;
+    left: Opx;
+    width: 100vw;
+  }
 `;
 
 export default AppStyled;
