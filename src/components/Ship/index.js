@@ -11,7 +11,7 @@ const Ship = ({
   destruction,
 }) => {
   const spacePress = () => (
-    space ? 'flamme' : 'flamme hide'
+    space && !destruction ? 'flamme' : 'flamme hide'
   );
   const shipDestroy = () => (
     destruction ? 'destruction' : 'ailes'

@@ -3,10 +3,11 @@ import styled from 'styled-components';
 const DataStyled = styled.ul`
   border: gray solid 1px;
   display:inline-block;
-  padding: 20px;
+  padding: 20px 0 20px 20px;
   width: 21%;
   color:green;
   background-color: #111;
+  
 
   .atterissage {
     color:white;
