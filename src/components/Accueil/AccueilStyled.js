@@ -29,7 +29,7 @@ const AccueilStyled = styled.div`
     animation-fill-mode: forwards;
     top: -10em;
     &:before{
-      content: "Creat by ";
+      content: "Created by ";
       animation-name: createAnimation;
       animation-duration: 3s;
       animation-delay: 3.5s;

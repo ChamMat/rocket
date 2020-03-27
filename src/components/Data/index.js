@@ -32,10 +32,10 @@ const Data = ({
 
   return (
     <DataStyled>
-      <li className="atterissage">Atterissage:</li>
-      <li className={vitesseXDangeureuse()}>{`Vitesse X: ${roundDecimal(vitesseX)} km/h`}</li>
-      <li className={vitesseYDangeureuse()}>{`Vitesse Y: ${roundDecimal(vitesseY)} km/h`}</li>
-      <li className={angleDangereux()}>{`Angle: ${roundDecimal(angle)} degre `}</li>
+      <li className="atterissage">Landing:</li>
+      <li className={vitesseXDangeureuse()}>{`Speed X: ${roundDecimal(vitesseX)} km/h`}</li>
+      <li className={vitesseYDangeureuse()}>{`Speed Y: ${roundDecimal(vitesseY)} km/h`}</li>
+      <li className={angleDangereux()}>{`Angle: ${roundDecimal(angle)} degree `}</li>
     </DataStyled>
   );
 };
