@@ -161,6 +161,7 @@ Panel.propTypes = {
   space: PropTypes.bool.isRequired,
   right: PropTypes.bool.isRequired,
   left: PropTypes.bool.isRequired,
+  pause: PropTypes.bool.isRequired,
 };
 
 export default Panel;
