@@ -59,6 +59,8 @@ const Panel = ({
       right,
     );
 
+    // ici, on enregistre l'array qui contient la liste des blocks validés
+
     if (newData.blocksValidate && !blocksValidate.includes(newData.blocksValidate)) {
       setBlockValidate([...blocksValidate, newData.blocksValidate]);
     }
