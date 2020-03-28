@@ -1,18 +1,107 @@
 export default {
-  level1: [
-    {
-      id: 1,
-      bottom: '0',
-      left: '100',
-      height: '50',
-      width: '50',
+  level3: {
+    init: {
+      posX: 120,
+      posY: 50,
+      gravite: 0.02,
+      inertie: 1,
+      puissance: 0.03,
     },
-    {
-      id: 2,
-      bottom: '0',
-      left: '600',
-      height: '50',
-      width: '50',
+    blocks: [
+      {
+        id: 1,
+        bottom: '0',
+        left: '100',
+        height: '50',
+        width: '50',
+        required: true,
+      },
+      {
+        id: 2,
+        bottom: '0',
+        left: '750',
+        height: '50',
+        width: '50',
+        required: true,
+      },
+    ],
+  },
+  level2: {
+    init: {
+      posX: 120,
+      posY: 50,
+      gravite: 0.02,
+      inertie: 1,
+      puissance: 0.03,
     },
-  ],
+    blocks: [
+      {
+        id: 1,
+        bottom: '0',
+        left: '100',
+        height: '50',
+        width: '50',
+        required: true,
+      },
+      {
+        id: 2,
+        bottom: '0',
+        left: '400',
+        height: '200',
+        width: '50',
+        required: false,
+      },
+      {
+        id: 3,
+        bottom: '0',
+        left: '750',
+        height: '50',
+        width: '50',
+        required: true,
+      },
+    ],
+  },
+  level1: {
+    init: {
+      posX: 120,
+      posY: 50,
+      gravite: 0.02,
+      inertie: 1,
+      puissance: 0.03,
+    },
+    blocks: [
+      {
+        id: 1,
+        bottom: '0',
+        left: '100',
+        height: '50',
+        width: '50',
+        required: true,
+      },
+      {
+        id: 2,
+        bottom: '0',
+        left: '400',
+        height: '500',
+        width: '50',
+        required: false,
+      },
+      {
+        id: 3,
+        bottom: '550',
+        left: '400',
+        height: '200',
+        width: '50',
+        required: false,
+      },
+      {
+        id: 4,
+        bottom: '0',
+        left: '750',
+        height: '50',
+        width: '50',
+        required: true,
+      },
+    ],
+  },
 };

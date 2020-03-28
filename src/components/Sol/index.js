@@ -10,10 +10,16 @@ const Sol = ({
   left,
   height,
   width,
+  required,
 }) => {
-  const valide = validate.includes(id);
+  // Si le block n'est pas requie, il ne peut pas être validé.
+  // Si le block est validée, il changera de couleur.
+  const valide = required ? validate.includes(id) : false;
+  // si le block n'est pas requi, la couleur par default est rouge sinon gray
+  const colorUnRequire = required ? 'gray' : '#9c1414';
   return (
     <SolStyled
+      required={colorUnRequire}
       valide={valide}
       bottom={bottom}
       left={left}
@@ -30,6 +36,7 @@ Sol.propTypes = {
   left: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
+  required: PropTypes.bool.isRequired,
 };
 
 export default Sol;

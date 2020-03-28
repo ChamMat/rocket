@@ -39,6 +39,10 @@ const AccueilStyled = styled.div`
     }
   }
 
+  .link {
+      cursor:unset;
+    }
+
   .startButton {
     background-color: gray;
     border:none;
@@ -51,9 +55,7 @@ const AccueilStyled = styled.div`
     animation-fill-mode:forwards;
     opacity: 0;
     cursor:unset;
-    .link {
-      cursor:unset;
-    }
+   
   }
 
   @keyframes buttonAnimate {

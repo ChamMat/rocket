@@ -9,7 +9,7 @@ const SolStyled = styled.div.attrs((props) => ({
   },
 }))`
     position:absolute;
-    background-color: ${(props) => (props.valide ? 'green' : 'gray')};
+    background: ${(props) => (props.valide ? 'green' : props.required)};
 `;
 
 export default SolStyled;

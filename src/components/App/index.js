@@ -73,7 +73,7 @@ const App = () => {
           <Accueil />
         </Route>
 
-        <Route exact path="/game">
+        <Route exact path="/game/level1">
           <Panel
             space={space}
             right={right}

@@ -1,5 +1,6 @@
 const handleTick = (
   blocks,
+  init,
   shipWidth,
   shipHeight,
   posX,
@@ -29,9 +30,9 @@ const handleTick = (
 
   if (!destruction) {
     let newDeg = deg;
-    const gravite = 0.02;
-    const inertie = 1;
-    const puissance = 0.03;
+    // const gravite = init.gravite;
+    // const inertie = 1;
+    // const puissance = 0.03;
 
     // ========== Gestion des reacteurs latéraux
     if (left) {
@@ -50,20 +51,20 @@ const handleTick = (
 
     // ========= Gestion de la gravité==========
 
-    let deplacementY = gravite * -1;
+    let deplacementY = init.gravite * -1;
     let deplacementX = 0;
 
     // ========== Gestion de l'inertie==========
 
-    deplacementX += vitesseX * inertie;
-    deplacementY += vitesseY * inertie;
+    deplacementX += vitesseX * init.inertie;
+    deplacementY += vitesseY * init.inertie;
 
 
     // ========= Gestion des reacteurs
 
     if (space) {
-      deplacementX += puissance * (Math.sin(newDeg * Math.PI / 180));
-      deplacementY += puissance * (Math.cos(newDeg * Math.PI / 180));
+      deplacementX += init.puissance * (Math.sin(newDeg * Math.PI / 180));
+      deplacementY += init.puissance * (Math.cos(newDeg * Math.PI / 180));
     }
 
     // Atterissage/collision sur le/les blocks

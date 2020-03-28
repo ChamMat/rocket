@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import levelData from 'src/levelData/levelData';
@@ -21,15 +21,8 @@ const Panel = ({
   const shipWidth = 10;
   const shipHeight = 30;
   // Position initial: position du 1er block + sa largeur / 2 - largeur du vaisseau / 2
-  const [posX, setPosX] = useState(
-    Number(levelData.level1[0].left)
-  + Number(((levelData.level1[0].width / 2)
-  - (shipWidth / 2))),
-  );
-  const [posY, setPosY] = useState(
-    Number(levelData.level1[0].bottom)
-    + Number(levelData.level1[0].height),
-  );
+  const [posX, setPosX] = useState(0);
+  const [posY, setPosY] = useState(0);
   const [vitesseX, setVitesseX] = useState(0);
   const [vitesseY, setVitesseY] = useState(0);
   const [deg, setDeg] = useState(0);
@@ -38,17 +31,17 @@ const Panel = ({
   const [vitesseXDanger, setVitesseXDanger] = useState(false);
   const [vitesseYDanger, setVitesseYDanger] = useState(false);
   const [blocksValidate, setBlockValidate] = useState([]);
-  // const [gravite, setgravite] = useState(1);
+  const [delay, setDelay] = useState(20);
 
   // C'est ici qu'es géré la boucle infinie.
   // eslint-disable-next-line consistent-return
   useInterval(() => {
     if (pause) {
-      // A supprimer
-      return false;
+      setDelay(null);
     }
     const newData = handleTick(
-      levelData.level1,
+      levelData.level1.blocks,
+      levelData.level1.init,
       shipWidth,
       shipHeight,
       posX,
@@ -77,7 +70,22 @@ const Panel = ({
     setAngleDanger(newData.angleDanger);
     setVitesseXDanger(newData.vitesseXDanger);
     setVitesseYDanger(newData.vitesseYDanger);
-  }, 20);
+  }, delay);
+
+  // Initialisation du niveau.
+  useEffect(() => {
+    setPosX(levelData.level1.init.posX);
+    setPosY(levelData.level1.init.posY);
+    setVitesseX(0);
+    setVitesseY(0);
+    setDeg(0);
+    setDestruction(false);
+    setAngleDanger(false);
+    setVitesseXDanger(false);
+    setVitesseYDanger(false);
+    setBlockValidate([]);
+    setDelay(20);
+  }, []);
 
   return (
     <PanelStyled>
@@ -97,7 +105,7 @@ const Panel = ({
         space={space}
         destruction={destruction}
       />
-      {levelData.level1.map((sol) => (
+      {levelData.level1.blocks.map((sol) => (
         <Sol
           key={sol.id}
           validate={blocksValidate}
@@ -106,6 +114,7 @@ const Panel = ({
           left={`${sol.left}px`}
           height={`${sol.height}px`}
           width={`${sol.width}px`}
+          required={sol.required}
         />
       ))}
     </PanelStyled>
