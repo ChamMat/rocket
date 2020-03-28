@@ -32,6 +32,7 @@ const Panel = ({
   const [vitesseYDanger, setVitesseYDanger] = useState(false);
   const [blocksValidate, setBlockValidate] = useState([]);
   const [delay, setDelay] = useState(20);
+  const [victoire, setVictoire] = useState(false);
 
   // C'est ici qu'es géré la boucle infinie.
   // eslint-disable-next-line consistent-return
@@ -85,7 +86,7 @@ const Panel = ({
     setVitesseYDanger(false);
     setBlockValidate([]);
     setDelay(20);
-  }, []);
+  }, [destruction]);
 
   return (
     <PanelStyled>
