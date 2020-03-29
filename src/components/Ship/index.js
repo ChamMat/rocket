@@ -8,10 +8,11 @@ const Ship = ({
   posY,
   deg,
   space,
+  fuel,
   destruction,
 }) => {
   const spacePress = () => (
-    space && !destruction ? 'flamme' : 'flamme hide'
+    space && fuel > 0 && !destruction ? 'flamme' : 'flamme hide'
   );
   const shipDestroy = () => (
     destruction ? 'destruction' : 'ailes'
@@ -36,6 +37,7 @@ Ship.propTypes = {
   deg: PropTypes.number.isRequired,
   space: PropTypes.bool.isRequired,
   destruction: PropTypes.bool.isRequired,
+  fuel: PropTypes.number.isRequired,
 };
 
 export default Ship;

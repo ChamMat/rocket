@@ -33,10 +33,11 @@ const Panel = ({
   const [vitesseXDanger, setVitesseXDanger] = useState(false);
   const [vitesseYDanger, setVitesseYDanger] = useState(false);
   const [blocksValidate, setBlockValidate] = useState([]);
-  const [delay, setDelay] = useState(20);
+  const [delay, setDelay] = useState(40);
   const [victoire, setVictoire] = useState(false);
   const [blockAValider, setBlockAValider] = useState(1);
   const [rejouer, setRejouer] = useState(false);
+  const [fuel, setFuel] = useState(0);
 
   const params = useParams();
   const dataLevel = Object.entries(levelData).find((element) => element[0] === params.level);
@@ -47,6 +48,16 @@ const Panel = ({
     if (pause) {
       setDelay(null);
     }
+
+    let reactor = false;
+
+    if (fuel <= 0) {
+      reactor = false;
+    }
+    else {
+      reactor = space;
+    }
+
     const newData = handleTick(
       dataLevel[1].blocks,
       dataLevel[1].init,
@@ -61,7 +72,7 @@ const Panel = ({
       angleDanger,
       vitesseXDanger,
       vitesseYDanger,
-      space,
+      reactor,
       left,
       right,
     );
@@ -80,6 +91,9 @@ const Panel = ({
     setVitesseXDanger(newData.vitesseXDanger);
     setVitesseYDanger(newData.vitesseYDanger);
 
+    if (reactor && fuel > 0) {
+      setFuel(fuel - 1);
+    }
 
     if (blockAValider === blocksValidate.length) {
       setVictoire(true);
@@ -100,6 +114,7 @@ const Panel = ({
   // Initialisation du niveau.
   useEffect(() => {
     setVictoire(false);
+    setFuel(dataLevel[1].init.fuel);
     setPosX(dataLevel[1].init.posX);
     setPosY(dataLevel[1].init.posY);
     setVitesseX(0);
@@ -127,6 +142,7 @@ const Panel = ({
           rejouer={handleClickRejouer}
           level={params.level}
           restart={handleClickRejouer}
+          fuel={fuel}
         />
       )}
       <Data
@@ -137,12 +153,14 @@ const Panel = ({
         angleDanger={angleDanger}
         vitesseXDanger={vitesseXDanger}
         vitesseYDanger={vitesseYDanger}
+        fuel={fuel}
       />
       <Ship
         posX={posX}
         posY={posY}
         deg={deg}
         space={space}
+        fuel={fuel}
         destruction={destruction}
       />
       {dataLevel[1].blocks.map((sol) => (

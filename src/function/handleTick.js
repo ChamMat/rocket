@@ -82,7 +82,9 @@ const handleTick = (
           newData.destruction = true;
         }
         else if (!space) {
-          newData.blocksValidate = block.id;
+          if (block.required) {
+            newData.blocksValidate = block.id;
+          }
           deplacementY = 0;
           newData.posY = (Number(block.bottom) + Number(block.height));
           deplacementX = 0;

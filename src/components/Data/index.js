@@ -10,6 +10,7 @@ const Data = ({
   angleDanger,
   vitesseXDanger,
   vitesseYDanger,
+  fuel,
 }) => {
   function roundDecimal(nombre, precision) {
     const precisionNew = precision || 0;
@@ -30,12 +31,16 @@ const Data = ({
     vitesseYDanger ? 'danger' : ''
   );
 
+  const fuelDanger = () => (
+    fuel < 200 ? 'danger' : ''
+  );
+
   return (
     <DataStyled>
-      <li className="atterissage">Landing:</li>
-      <li className={vitesseXDangeureuse()}>{`Speed X: ${roundDecimal(vitesseX)} km/h`}</li>
-      <li className={vitesseYDangeureuse()}>{`Speed Y: ${roundDecimal(vitesseY)} km/h`}</li>
-      <li className={angleDangereux()}>{`Angle: ${roundDecimal(angle)} degree `}</li>
+      <div className={`divElt ${vitesseXDangeureuse()} speed`}>SpeedX: <span className="valDynamique">{roundDecimal(vitesseX)} km/h</span></div>
+      <div className={`divElt ${vitesseYDangeureuse()} speed`}>SpeedY: <span className="valDynamique">{roundDecimal(vitesseY)} km/h</span></div>
+      <div className={`divElt ${angleDangereux()}`}>Angle: <span className="valDynamique">{roundDecimal(angle)} degree</span></div>
+      <div className={`divElt ${fuelDanger()}`}>Fuel: <span className="valDynamique">{fuel}L</span></div>
     </DataStyled>
   );
 };
@@ -47,6 +52,7 @@ Data.propTypes = {
   angleDanger: PropTypes.bool.isRequired,
   vitesseXDanger: PropTypes.bool.isRequired,
   vitesseYDanger: PropTypes.bool.isRequired,
+  fuel: PropTypes.number.isRequired,
 };
 
 export default Data;
