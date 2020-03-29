@@ -13,7 +13,7 @@ const ShipStyled = styled.div.attrs((props) => ({
     z-index: 90;
     height: 20px;
     width: 10px;
-    background-color: #bfb164;
+    background-color: #995;
     &:before {
       content:'';
       border-left: solid 5px transparent;
@@ -26,11 +26,11 @@ const ShipStyled = styled.div.attrs((props) => ({
       content:'';
       border-left: solid 13px transparent;
       border-right: solid 13px transparent;
-      border-bottom: solid 10px #bfb164;
+      border-bottom: solid 10px #995;
       position: relative;
       top: -19px;
       left: -8px;
-      z-index: 80;
+      z-index: -1;
     }
     .destruction {
       position: relative;

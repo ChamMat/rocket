@@ -9,17 +9,29 @@ const MenuVictoire = ({
   level,
   restart,
   fuel,
+  destruction,
 }) => {
   const numeroLevel = parseInt(level.split('level')[1], 0) + 1;
 
-
   return (
     <MenuVictoireStyled>
-      <h2>Gagné!</h2>
-      <p>Il vous reste {fuel} fuels</p>
-      <button type="button" onClick={rejouer}>Rejouer</button>
-      <Link onClick={restart} to={`/game/level${numeroLevel}`}><button type="button">Next</button></Link>
+      {!destruction
+      && (
+      <div>
+        <h2>Gagné!</h2>
+        <p>Il vous reste {fuel} fuels</p>
+        <button type="button" onClick={rejouer}>Rejouer</button>
+        <Link onClick={restart} to={`/game/level${numeroLevel}`}><button type="button">Next</button></Link>
+      </div>
+      )}
 
+      {destruction
+      && (
+      <div>
+        <h2>Perdu!</h2>
+        <input type="button" onClick={rejouer} value="Rejouer" />
+      </div>
+      )}
     </MenuVictoireStyled>
   );
 };
@@ -29,6 +41,7 @@ MenuVictoire.propTypes = {
   level: PropTypes.string.isRequired,
   restart: PropTypes.func.isRequired,
   fuel: PropTypes.number.isRequired,
+  destruction: PropTypes.bool.isRequired,
 };
 
 export default MenuVictoire;

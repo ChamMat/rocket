@@ -42,6 +42,10 @@ const Panel = ({
   const params = useParams();
   const dataLevel = Object.entries(levelData).find((element) => element[0] === params.level);
 
+  const handleClickRejouer = () => {
+    setRejouer(true);
+  };
+
   // C'est ici qu'es géré la boucle infinie.
   // eslint-disable-next-line consistent-return
   useInterval(() => {
@@ -91,10 +95,16 @@ const Panel = ({
     setVitesseXDanger(newData.vitesseXDanger);
     setVitesseYDanger(newData.vitesseYDanger);
 
+    // Si il n'y a plus de fuel, plus de poussé
     if (reactor && fuel > 0) {
       setFuel(fuel - 1);
     }
 
+    if (destruction) {
+      setDelay(null);
+    }
+
+    // condition de victoire
     if (blockAValider === blocksValidate.length) {
       setVictoire(true);
       setDelay(null);
@@ -130,19 +140,15 @@ const Panel = ({
     setRejouer(false);
   }, [rejouer]);
 
-
-  const handleClickRejouer = () => {
-    setRejouer(true);
-  };
-
   return (
     <PanelStyled>
-      { victoire && (
+      { (victoire || destruction) && (
         <MenuVictoire
           rejouer={handleClickRejouer}
           level={params.level}
           restart={handleClickRejouer}
           fuel={fuel}
+          destruction={destruction}
         />
       )}
       <Data
