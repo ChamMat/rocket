@@ -16,7 +16,7 @@ const AccueilStyled = styled.div`
   .titre {
     font-size:5em;
     animation-name: titleAnimate;
-    animation-duration: 5s;
+    animation-duration: 2s;
     animation-fill-mode:forwards;
   }
 
@@ -24,15 +24,15 @@ const AccueilStyled = styled.div`
     position: relative;
     left: 30em;
     animation-name: createAnimation;
-    animation-duration: 3s;
-    animation-delay: 3.5s;
+    animation-duration: 1s;
+    animation-delay: 1.5s;
     animation-fill-mode: forwards;
     top: -10em;
     &:before{
       content: "Created by ";
       animation-name: createAnimation;
-      animation-duration: 3s;
-      animation-delay: 3.5s;
+      animation-duration: 1s;
+      animation-delay: 1.5s;
       animation-fill-mode:forwards;
       position: relative;
       left: -51em;
@@ -50,8 +50,8 @@ const AccueilStyled = styled.div`
     border-radius:3px;
     font-size:1.5em;
     animation-name: buttonAnimate;
-    animation-delay: 5s;
-    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-duration: 2s;
     animation-fill-mode:forwards;
     opacity: 0;
     cursor:unset;

@@ -16,7 +16,7 @@ const Sol = ({
   // Si le block est validée, il changera de couleur.
   const valide = required ? validate.includes(id) : false;
   // si le block n'est pas requi, la couleur par default est rouge sinon gray
-  const colorUnRequire = required ? 'gray' : '#9c1414';
+  const colorUnRequire = required ? '#d4760b' : 'gray';
   return (
     <SolStyled
       required={colorUnRequire}
