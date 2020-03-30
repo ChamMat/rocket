@@ -36,9 +36,7 @@ const DataStyled = styled.div`
   .danger {
     animation-name: alarm;
     animation-duration:.5s;
-    animation-delay:1s;
-    animation-direction:alternate;
-    animation-iteration-count:infinite;
+    animation-fill-mode:forwards;
     border-bottom: solid 4px #F00;
     .valDynamique {
       color: red;
