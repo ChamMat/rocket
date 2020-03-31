@@ -324,7 +324,7 @@ export default {
       gravite: 0.02,
       inertie: 1,
       puissance: 0.03,
-      fuel: 3000,
+      fuel: 3500,
     },
     blocks: [
       {

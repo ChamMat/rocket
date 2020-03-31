@@ -8,6 +8,7 @@ import {
 
 import Accueil from 'src/components/Accueil';
 import Panel from 'src/components/Panel';
+import End from 'src/components/End';
 
 // == Import
 import AppStyled from './AppStyled';
@@ -80,6 +81,10 @@ const App = () => {
             left={left}
             pause={pause}
           />
+        </Route>
+
+        <Route exact path="/end">
+          <End />
         </Route>
 
 

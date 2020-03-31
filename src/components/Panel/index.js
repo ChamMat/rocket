@@ -149,6 +149,7 @@ const Panel = ({
           restart={handleClickRejouer}
           fuel={fuel}
           destruction={destruction}
+          nbrLevel={Object.entries(levelData).length}
         />
       )}
       <Data

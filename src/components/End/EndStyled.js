@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const AccueilStyled = styled.div`
+const EndStyled = styled.div`
   position: relative;
   border: solid 1px #222;
   height:600px;
@@ -27,7 +27,7 @@ const AccueilStyled = styled.div`
     animation-duration: 1s;
     animation-delay: 1.5s;
     animation-fill-mode: forwards;
-    top: -10em;
+    top: -8.5em;
     &:before{
       content: "Created by ";
       animation-name: createAnimation;
@@ -60,15 +60,33 @@ const AccueilStyled = styled.div`
     }
   }
 
+  p {
+    font-size: 3em;
+    animation-name: congrate;
+    animation-duration: 6s;
+  }
+
+  @keyframes congrate {
+    from {
+      opacity:0;
+    }
+
+    to {
+      opacity:1;
+    }
+  }
+
   @keyframes buttonAnimate {
     from {
       opacity: 0;
+      transform:translateY(6em);
       cursor:pointer;
     }
 
     to {
       opacity: 1;
       cursor:pointer;
+      transform:translateY(6em);
     }
     
   }
@@ -87,7 +105,7 @@ const AccueilStyled = styled.div`
     }
 
     100% {
-      transform: translateY(-2.3em);
+      transform: translateY(-2em);
     } 
   }
 
@@ -102,4 +120,4 @@ const AccueilStyled = styled.div`
   }
 `;
 
-export default AccueilStyled;
+export default EndStyled;
