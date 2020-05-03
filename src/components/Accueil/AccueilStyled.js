@@ -22,7 +22,7 @@ const AccueilStyled = styled.div`
 
   .credit {
     position: relative;
-    left: 30em;
+    left: 35em;
     animation-name: createAnimation;
     animation-duration: 1s;
     animation-delay: 1.5s;
@@ -35,7 +35,7 @@ const AccueilStyled = styled.div`
       animation-delay: 1.5s;
       animation-fill-mode:forwards;
       position: relative;
-      left: -51em;
+      left: -65em;
     }
   }
 

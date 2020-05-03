@@ -4,9 +4,11 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import './reset.css';
+
 // == Import : local
-import App from 'src/components/App';
-import store from 'src/store';
+import App from 'components/App/index';
+import store from 'store';
 
 // == Render
 // 1. Élément React racine (celui qui contient l'ensemble de l'app)

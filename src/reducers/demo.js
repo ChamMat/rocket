@@ -1,5 +1,5 @@
 // Action Types
-import { DO_SOMETHING } from 'src/actions/demo';
+import { DO_SOMETHING } from 'actions/demo';
 
 // Initial State
 const initialState = {

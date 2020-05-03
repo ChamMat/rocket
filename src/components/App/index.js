@@ -6,9 +6,9 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Accueil from 'src/components/Accueil';
-import Panel from 'src/components/Panel';
-import End from 'src/components/End';
+import Accueil from 'components/Accueil';
+import Panel from 'components/Panel';
+import End from 'components/End';
 
 // == Import
 import AppStyled from './AppStyled';

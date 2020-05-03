@@ -20,7 +20,7 @@ const ShipStyled = styled.div.attrs((props) => ({
       border-right: solid 5px transparent;
       border-bottom: solid 10px #f6f3d4;
       position: relative;
-      top:-32px;
+      top:-26px;
     }
     .ailes {
       content:'';
@@ -28,7 +28,7 @@ const ShipStyled = styled.div.attrs((props) => ({
       border-right: solid 13px transparent;
       border-bottom: solid 10px #995;
       position: relative;
-      top: -19px;
+      top: -10px;
       left: -8px;
       z-index: -1;
     }
@@ -48,7 +48,7 @@ const ShipStyled = styled.div.attrs((props) => ({
       border-right: solid 5px transparent;
       border-bottom: solid 10px rgba(252, 148, 0, .5);
       position: relative;
-      top: -16px;
+      top: -7px;
       z-index: 70;
     }
     .hide {

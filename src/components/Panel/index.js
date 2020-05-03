@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 
-import levelData from 'src/levelData/levelData';
+import levelData from 'levelData/levelData';
 
-import useInterval from 'src/function/useInterval';
-import handleTick from 'src/function/handleTick';
+import useInterval from 'function/useInterval';
+import handleTick from 'function/handleTick';
 
-import Ship from 'src/components/Ship';
-import Sol from 'src/components/Sol';
-import Data from 'src/components/Data';
-import MenuVictoire from 'src/components/MenuVictoire';
+import Ship from 'components/Ship';
+import Sol from 'components/Sol';
+import Data from 'components/Data';
+import MenuVictoire from 'components/MenuVictoire';
 
 import PanelStyled from './PanelStyled';
 
